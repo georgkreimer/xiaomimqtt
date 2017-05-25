@@ -1,0 +1,15 @@
+{
+  "name": "xiaomimqtt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "trackTemp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Georg Kreimer",
+  "license": "Copyright Georg Kreimer",
+  "dependencies": {
+    "miio": "^0.12.0",
+    "mqtt": "^2.7.2"
+  }
+}

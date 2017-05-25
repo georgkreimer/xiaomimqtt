@@ -17,7 +17,7 @@ client.on('connect', function() {
 		const device = reg.device;
 
 		if(! device) {
-			console.log(reg.id, 'could not be connected to');
+			console.log(`${reg.id} could not be connected to`);
 			return;
 		}
 
@@ -25,27 +25,27 @@ client.on('connect', function() {
 			return;
 		}
 
-		console.log(device.type, 'is available');
+		console.log(`${device.type} is available`);
 
 		const message = JSON.stringify({
 			temperature: device.temperature,
 			humidity: device.humidity
 		});
 
-		const fullTopic = topic + '/' + deviceNames.climate[device.id];
+		const fullTopic = `${topic}/${deviceNames.climate[device.id]}`;
 
 		client.publish(fullTopic, message);
 
 		console.log(device.model);
-		console.log(device.humidity, '%');
-		console.log(device.temperature, 'ºC');
+		console.log(`${device.humidity}%`);
+		console.log(`${device.temperature}ºC`);
 
 		return;
 	});
 
 	devices.on('unavailable', reg => {
 		if(! reg.device) return;
-		console.log(reg.id, 'is unavailable');
+		console.log(`${reg.id} is unavailable`);
 	});
 
 	devices.on('error', err => {

@@ -25,20 +25,13 @@ client.on('connect', function() {
 			return;
 		}
 
-		console.log(`${device.type} is available`);
+		console.log(`${device.model} is available`);
 
-		const message = JSON.stringify({
-			temperature: device.temperature,
-			humidity: device.humidity
-		});
+		const temperatureTopic = `${topic}/${deviceNames.climate[device.id]}/temperature`;
+		const humidityTopic = `${topic}/${deviceNames.climate[device.id]}/humidity`;
 
-		const fullTopic = `${topic}/${deviceNames.climate[device.id]}`;
-
-		client.publish(fullTopic, message);
-
-		console.log(device.model);
-		console.log(`${device.humidity}%`);
-		console.log(`${device.temperature}ºC`);
+		client.publish(temperatureTopic, device.temperature);
+		client.publish(humidityTopic, device.humidity);
 
 		return;
 	});

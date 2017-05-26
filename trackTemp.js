@@ -30,8 +30,8 @@ client.on('connect', function() {
 		const temperatureTopic = `${topic}/${deviceNames.climate[device.id]}/temperature`;
 		const humidityTopic = `${topic}/${deviceNames.climate[device.id]}/humidity`;
 
-		client.publish(temperatureTopic, device.temperature);
-		client.publish(humidityTopic, device.humidity);
+		client.publish(temperatureTopic, device.temperature.toString());
+		client.publish(humidityTopic, device.humidity.toString());
 
 		return;
 	});
